@@ -9,9 +9,9 @@ import numpy
 from solution import solution
 import time
 import numba as nb
-from numba import jit
+from numba import njit,jit
 
-@njit
+@nb.njit()
 def GWO(objf, lb, ub, dim, SearchAgents_no, Max_iter, decrease_From=2):
     ret_score=0
 
@@ -32,6 +32,7 @@ def GWO(objf, lb, ub, dim, SearchAgents_no, Max_iter, decrease_From=2):
 
     # Initialize the positions of search agents
     Positions = numpy.zeros((SearchAgents_no, dim))
+    
     for i in range(dim):
         Positions[:, i] = (
             numpy.random.uniform(0, 1, SearchAgents_no) * (ub[i] - lb[i]) + lb[i]

@@ -11,7 +11,7 @@ import time
 import numba as nb
 from numba import jit
 
-@jit(target_backend='cuda')
+@njit
 def GWO(objf, lb, ub, dim, SearchAgents_no, Max_iter, decrease_From=2):
     ret_score=0
 
@@ -128,7 +128,7 @@ def GWO(objf, lb, ub, dim, SearchAgents_no, Max_iter, decrease_From=2):
         Convergence_curve[l] = Alpha_score
         ret_score=Alpha_score
 
-        if l % 20 == 0:
+        if l % 10 == 0:
             print(
                 ["At iteration " + str(l) + " the best fitness is " + str(Alpha_score)]
             )

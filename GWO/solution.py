@@ -1,5 +1,5 @@
 
-from numba import jitclass
+from numba.experimental import jitclass
 # -*- coding: utf-8 -*-
 """
 Created on Tue May 17 17:06:19 2016

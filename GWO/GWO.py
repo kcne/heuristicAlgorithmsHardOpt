@@ -128,7 +128,7 @@ def GWO(objf, lb, ub, dim, SearchAgents_no, Max_iter, decrease_From=2):
         Convergence_curve[l] = Alpha_score
         ret_score=Alpha_score
 
-        if l % 1 == 0:
+        if l % 20 == 0:
             print(
                 ["At iteration " + str(l) + " the best fitness is " + str(Alpha_score)]
             )

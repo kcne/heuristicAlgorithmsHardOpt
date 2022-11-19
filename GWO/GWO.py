@@ -9,7 +9,7 @@ import numpy
 from solution import solution
 import time
 import numba as nb
-from numba import jit, cuda
+from numba import jit
 
 @jit(target_backend='cuda')
 def GWO(objf, lb, ub, dim, SearchAgents_no, Max_iter, decrease_From=2):

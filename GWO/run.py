@@ -10,8 +10,7 @@ def allocateObjectiveFunctions():
 def bounds(function_num):
     bounds=[[-32.768,32768],[-600,600],[-500,500],[-5.12,5.12],[-5.12,5.12],[-65.536,65.536],[-30,30],[-5,10],[-2048,2048],[0,14]]
     return bounds[function_num][0], bounds[function_num][1]
-    
-@jit(target_backend='cuda')
+
 def optimizeGWO():
     dim=30
     obj_functions=allocateObjectiveFunctions()

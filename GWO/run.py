@@ -2,7 +2,8 @@ import functions
 from enumFunctions import Functions
 from GWO import GWO
 import pandas as pd
-from numba import jit, cuda
+from numba import jit
+import time
 
 def allocateObjectiveFunctions():
     objective_functions=[functions.selectFunction(Functions.ackley),functions.selectFunction(Functions.griewank),functions.selectFunction(Functions.schwefel),functions.selectFunction(Functions.rastrigin),functions.selectFunction(Functions.sphere),functions.selectFunction(Functions.rotatedhyperellipsoid),functions.selectFunction(Functions.perm),functions.selectFunction(Functions.zakharov),functions.selectFunction(Functions.rosenbrock),functions.selectFunction(Functions.damavandi)]
@@ -28,6 +29,7 @@ def optimizeGWO():
                     for _ in range(5):
                         best=GWO(obj_func,lower_bound,upper_bound,dim,pop_size,num_gen,a)
                         results.append([obj_func.__name__,lower_bound,upper_bound,pop_size,num_gen,a,best[1]])
+                        print([[obj_func.__name__,lower_bound,upper_bound,pop_size,num_gen,a,best[1]]])
         df=pd.DataFrame(results,columns=['obj_f','lower_bound','upper_bound','pop_size','num_gen','a_decreaese','best_fitness'])
         df['std_dev']=df['best_fitness'].rolling(5).std()
         df['avg_fitness']=df['best_fitness'].rolling(5).mean()
